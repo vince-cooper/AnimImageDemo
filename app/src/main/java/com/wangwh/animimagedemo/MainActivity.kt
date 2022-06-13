@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import com.facebook.drawee.backends.pipeline.Fresco
+import com.github.penfeizhou.animation.FrameAnimationDrawable
 import com.github.penfeizhou.animation.apng.APNGDrawable
 import com.github.penfeizhou.animation.loader.AssetStreamLoader
 import com.github.penfeizhou.animation.webp.WebPDrawable
@@ -21,10 +22,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        loadAPNG()
-//        loadWEBP()
-//        loadAPNGUseFresco()
-//        loadWEBPUseFresco()
+        binding.osapng.setOnClickListener { loadAPNG() }
+        binding.oswebp.setOnClickListener { loadWEBP() }
+        binding.frescoapng.setOnClickListener { loadAPNGUseFresco() }
+        binding.frescowebp.setOnClickListener { loadWEBPUseFresco() }
     }
 
     /**
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadAPNG() {
         binding.draweeView.controller = null
         binding.draweeView.isVisible = false
+        binding.imageView.isVisible = true
 
         val assetLoader = AssetStreamLoader(this, "person.png")
         val apngDrawable = APNGDrawable(assetLoader)
@@ -63,6 +65,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadAPNGUseFresco() {
+        val drawable = binding.imageView.drawable
+        if (drawable is FrameAnimationDrawable<*>) {
+            drawable.reset()
+        }
         binding.imageView.setImageDrawable(null)
         binding.imageView.isVisible = false
         binding.draweeView.isVisible = true
@@ -78,6 +84,10 @@ class MainActivity : AppCompatActivity() {
     循环播放，内存：177MB，CPU：3%
      */
     private fun loadWEBPUseFresco() {
+        val drawable = binding.imageView.drawable
+        if (drawable is FrameAnimationDrawable<*>) {
+            drawable.reset()
+        }
         binding.imageView.setImageDrawable(null)
         binding.imageView.isVisible = false
         binding.draweeView.isVisible = true

@@ -26,4 +26,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/osapng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="开源APNG"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/oswebp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/oswebp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开源WEBP"
+        app:layout_constraintBottom_toBottomOf="@id/osapng"
+        app:layout_constraintEnd_toStartOf="@id/frescoapng"
+        app:layout_constraintStart_toEndOf="@id/osapng" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/frescoapng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="F APNG"
+        app:layout_constraintBottom_toBottomOf="@id/oswebp"
+        app:layout_constraintEnd_toStartOf="@id/frescowebp"
+        app:layout_constraintStart_toEndOf="@id/oswebp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/frescowebp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="F WEBP"
+        app:layout_constraintBottom_toBottomOf="@id/frescoapng"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/frescoapng" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
